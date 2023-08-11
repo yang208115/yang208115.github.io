@@ -206,6 +206,21 @@ const endGame = (tile) => {
 			tile.innerHTML = '💣';
 		}
 	});
+
+	if (gameOver) return;
+ 	let count = 0;
+ 	for (let i = 0; i < bombs.length; i++) {
+	   if (tiles[bombs[i]].classList.contains('tile--checked')) {
+	     count++;
+	   }
+	 }
+	 if (count === 3) {
+	   endscreen.innerHTML = endscreenContent.win;
+	   endscreen.classList.add('show');
+	   gameOver = true;
+ 	} else {
+   // Keep playing
+	 }
 }
 
 const checkVictory = () => {
