@@ -1,15 +1,15 @@
 export default {
   // page1部分
   page1: {
-    titleEn: 'Hello,I`m luoyunfa-250', //英文标题
+    titleEn: 'Hello,I`m yang208115', //英文标题
     title: '一个追梦在前端路上的小白', //中文标题
   },
   // page2部分
   page2: {
     authorImg: 'page1.jpg', // 作者头像
     xinhui: '我叫罗运发，是一名在读的初三学生。', // 幸会
-    qiuzhi: '后端开发', // 求职意向
-    guanyuwo: '掌握了后端python、java等等，有着公司项目实战的经验和一些java安卓开发经历。希望可以和大家一起学习，共同进步！' // 关于我
+    qiuzhi: 'python开发', // 求职意向
+    guanyuwo: '掌握了python、java等等' // 关于我
   },
   // page3部分
   page3: [{
@@ -66,37 +66,7 @@ export default {
     }]
   },
   // page5部分
-  page5: [/*{
-    title: '508工作室',
-    content: '晋城职业技术学院508工作室独立站点的维护',
-    image: 'box1.png',
-    href: 'https://lab508.gitee.io/'
-  }, {
-    title: '图书管理系统',
-    content: 'Vue,NodeJs图书管理系统前后端',
-    image: 'box3.jpg',
-    href: 'https://gitee.com/wttAndroid/book_admin'
-  }, {
-    title: '校园约吧',
-    content: 'Vue,NodeJs移动端校园项目前后端',
-    image: 'box5.jpg',
-    href: 'https://gitee.com/wttAndroid/xyy_server'
-  }, {
-    title: '蘑菇街',
-    content: 'Vue蘑菇街商城案例前端',
-    image: 'box2.png',
-    href: 'https://github.com/wttAndroid/MyShoppingStreet'
-  }, {
-    title: '个人简历',
-    content: 'html,css,jq,bootsrap搭建个人简历网站',
-    image: 'box4.png',
-    href: ''
-  }, {
-    title: '二维码生成器',
-    content: 'Android二维码生成器',
-    image: 'box6.jpeg',
-    href: ''
-  }*/
+  page5: [
     {
     title: '聊天室',
     content: '无',
