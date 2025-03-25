@@ -1,1 +1,0 @@
-const t=JSON.parse('{"key":"v-3719498c","path":"/blogs/extracts/2019/the-road.html","title":"《未选择的路》","lang":"en-US","frontmatter":{"title":"《未选择的路》","date":"2019-03-26T00:00:00.000Z","tags":["poem"],"categories":["摘记"]},"headers":[],"git":{},"filePathRelative":"blogs/extracts/2019/the-road.md"}');export{t as data};
