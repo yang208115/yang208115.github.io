@@ -1,25 +1,282 @@
 <!DOCTYPE html>
-<html lang="en-US">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="generator" content="VuePress 2.0.0-beta.63">
-    <script>
-      (function() {
-        const userMode = localStorage.getItem('vuepress-reco-color-scheme') || 'auto';
-        const systemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-        if (userMode === 'dark' || (userMode === 'auto' && systemDarkMode)) {
-          document.documentElement.classList.toggle('dark', true);
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我 | Developer Profile</title>
+    <!-- 引入适合阅读的圆体字 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #fff5f7;   /* 极淡的粉色背景 */
+            --primary: #ff85a2;    /* 核心糖果粉 */
+            --primary-bg: #fff0f3; /* 浅粉色块背景 */
+            --text-main: #4a4a4a;  /* 深灰文字，比纯黑更柔和 */
+            --text-light: #888888;
+            --accent-blue: #a2d2ff; /* 点缀蓝 */
         }
-      })();
-    </script>
-    <link rel="icon" href="/favicon.ico"><title>运阳</title><meta name="description" content="life is like a cup of latte, and cat will make it unlonely">
-    <link rel="modulepreload" href="/assets/app-5084c8ad.js"><link rel="modulepreload" href="/assets/index.html-925e1376.js"><link rel="modulepreload" href="/assets/index.html-ffdaeaeb.js"><link rel="prefetch" href="/assets/index.html-0a05feab.js" as="script"><link rel="prefetch" href="/assets/index.html-8c2edf06.js" as="script"><link rel="prefetch" href="/assets/index.html-4b3ba946.js" as="script"><link rel="prefetch" href="/assets/index.html-a2c706b5.js" as="script"><link rel="prefetch" href="/assets/index.html-11d33fc6.js" as="script"><link rel="prefetch" href="/assets/index.html-6cf06f14.js" as="script"><link rel="prefetch" href="/assets/message-board.html-d0bb711f.js" as="script"><link rel="prefetch" href="/assets/node.html-0e23a113.js" as="script"><link rel="prefetch" href="/assets/404.html-60b35caa.js" as="script"><link rel="prefetch" href="/assets/index.html-57132d41.js" as="script"><link rel="prefetch" href="/assets/index.html-028f7a87.js" as="script"><link rel="prefetch" href="/assets/index.html-2585a2b2.js" as="script"><link rel="prefetch" href="/assets/index.html-6c772106.js" as="script"><link rel="prefetch" href="/assets/index.html-1a523525.js" as="script"><link rel="prefetch" href="/assets/index.html-932e6e98.js" as="script"><link rel="prefetch" href="/assets/message-board.html-54f51e25.js" as="script"><link rel="prefetch" href="/assets/node.html-ee9b6cdc.js" as="script"><link rel="prefetch" href="/assets/404.html-73a5ac6c.js" as="script"><link rel="prefetch" href="/assets/reco-valine-994c873b.js" as="script"><link rel="prefetch" href="/assets/giscus-2a044aea-497f0bd4.js" as="script">
-    <link rel="preload" href="/assets/style-4a2901e8.css" as="style"><link rel="stylesheet" href="/assets/style-4a2901e8.css">
-  </head>
-  <body>
-    <div id="app"><!--[--><div class="theme-container"><div class="common-wrapper series--no"><!----><!----></div></div><!----><!----><!--]--></div>
-    <script type="module" src="/assets/app-5084c8ad.js" defer></script>
-  </body>
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: radial-gradient(var(--primary) 0.5px, transparent 0.5px);
+            background-size: 20px 20px; /* 细腻的点阵背景 */
+            color: var(--text-main);
+            font-family: 'Quicksand', 'Noto Sans SC', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 1.7;
+        }
+
+        /* 主容器 */
+        .container {
+            width: 960px;
+            max-width: 94%;
+            height: 650px; /*稍微加高一点，容纳更多文字*/
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 15px 40px rgba(255, 133, 162, 0.15);
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* 左侧边栏 (固定信息) */
+        .sidebar {
+            background: #fdfbfb;
+            border-right: 1px dashed #ffd1dc;
+            padding: 40px 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .avatar {
+            width: 120px; height: 120px;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .avatar:hover { transform: rotate(5deg) scale(1.05); }
+
+        .name { font-size: 1.4rem; font-weight: 700; color: #333; margin-bottom: 5px; }
+        .role { 
+            font-size: 0.85rem; color: var(--primary); 
+            background: var(--primary-bg); padding: 3px 12px; 
+            border-radius: 20px; margin-bottom: 30px; 
+        }
+
+        /* 侧边栏底部联系方式 */
+        .contact-links {
+            margin-top: auto;
+            width: 100%;
+        }
+        .contact-item {
+            display: block;
+            background: #fff;
+            border: 1px solid #f0f0f0;
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 0.85rem;
+            transition: 0.2s;
+        }
+        .contact-item:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--primary-bg);
+        }
+
+        /* 右侧内容区 (可滚动) */
+        .main-content {
+            padding: 50px 60px;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+
+        /* 标题样式 */
+        h2 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: 2px; left: 0; width: 100%; height: 8px;
+            background: rgba(255, 133, 162, 0.2); /* 粉色马克笔效果 */
+            z-index: -1;
+        }
+
+        /* 正文段落 */
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
+            color: #555;
+        }
+
+        .highlight {
+            color: var(--primary);
+            font-weight: 700;
+            background: var(--primary-bg);
+            padding: 0 4px;
+            border-radius: 4px;
+        }
+
+        /* WakaInsight 特别展示卡片 */
+        .project-banner {
+            margin: 30px 0;
+            background: linear-gradient(135deg, #fff 0%, #fff0f3 100%);
+            border: 2px solid #ffeef1;
+            border-radius: 16px;
+            padding: 25px;
+            position: relative;
+            transition: transform 0.3s;
+            text-decoration: none;
+            display: block;
+            color: inherit;
+        }
+        .project-banner:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 20px rgba(255, 133, 162, 0.15);
+        }
+        .project-tag {
+            position: absolute;
+            top: 15px; right: 15px;
+            background: var(--primary);
+            color: white;
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        /* 技术栈列表 */
+        .tech-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+        .tech-item {
+            background: #fff;
+            border: 1px solid #eee;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #666;
+            transition: 0.2s;
+        }
+        .tech-item:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 800px) {
+            .container { 
+                grid-template-columns: 1fr; 
+                height: auto; 
+                border-radius: 0;
+                box-shadow: none;
+            }
+            body { background: #fff; display: block; }
+            .sidebar { border-right: none; border-bottom: 1px dashed #ffd1dc; padding: 30px; }
+            .main-content { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- 左侧：简略信息 -->
+        <aside class="sidebar">
+            <!-- 头像：请替换 -->
+            <img src="https://avatars.githubusercontent.com/u/132762661?v=4" class="avatar" alt="Avatar">
+            <div class="name">运阳</div>
+            <div class="role">Developer / 17yo</div>
+
+            <div style="font-size: 0.85rem; color:#888; margin-bottom: 20px; line-height: 1.8;">
+                📍 广东 · 广州<br>
+                💻 Arch Linux User<br>
+                🐍 Python Expert
+            </div>
+
+            <div class="contact-links">
+                <a href="https://lyuy.top" class="contact-item">🌸 访问博客 (Blog)</a>
+                <a href="mailto:a3305587173@outlook.com" class="contact-item">📧 发送邮件 (Email)</a>
+                <a href="https://github.com/yang208115" class="contact-item">🐙 GitHub</a>
+            </div>
+        </aside>
+
+        <!-- 右侧：详细介绍 -->
+        <main class="main-content">
+            
+            <!-- 第一部分：自我介绍 (仿 lyuy.top 风格) -->
+            <section id="intro">
+                <h2>你好，我是运阳 👋</h2>
+                <p>
+                    很高兴见到你！我是一名来自广东广州的 17 岁开发者。
+                    虽然年纪不大，但我已经与代码相伴了 4 年。对我来说，编程不仅仅是工具，更是一种探索世界的方式。
+                </p>
+                <p>
+                    我是 <span class="highlight">Python</span> 生态的忠实拥趸，热衷于构建高效的后端服务和自动化脚本。
+                    同时，我是一名“不安分”的 Linux 用户，日常主力系统是 
+                    <span class="highlight">Arch Linux</span> (使用 Niri 窗口管理器)。
+                    我喜欢折腾系统配置，追求极致的掌控感和生产力。
+                </p>
+            </section>
+
+            <!-- 第二部分：精选项目 (WakaInsight) -->
+            <section id="projects" style="margin-top: 40px;">
+                <h2>正在折腾 (Projects)</h2>
+                <p>这是我目前最满意的作品，也正好解决了我自己的痛点：</p>
+                
+                <a href="https://waka.lyuy.top/" target="_blank" class="project-banner">
+                    <span class="project-tag">Featured</span>
+                    <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: #333;">WakaInsight</h3>
+                    <p style="font-size: 0.9rem; color: #666; margin-bottom: 0;">
+                        一个自建的代码时长统计与分析平台。
+                        <br>它能精准记录我的编程习惯，替代昂贵的付费服务，将数据掌握在自己手中。
+                    </p>
+                    <div style="margin-top: 15px; font-weight: 700; color: var(--primary); font-size: 0.9rem;">
+                        查看演示页面 &rarr;
+                    </div>
+                </a>
+            </section>
+
+            <!-- 第三部分：技术栈 -->
+            <section id="skills" style="margin-top: 40px;">
+                <h2>技术栈 (Tech Stack)</h2>
+                <p>工欲善其事，必先利其器。以下是我常用的武器库：</p>
+                <ul class="tech-list">
+                    <li class="tech-item">Python 3.12+</li>
+                    <li class="tech-item">FastAPI / Flask</li>
+                    <li class="tech-item">React.js</li>
+                    <li class="tech-item">Git & GitHub Actions</li>
+                    <li class="tech-item">Docker</li>
+                    <li class="tech-item">PostgreSQL</li>
+                    <li class="tech-item">Arch Linux / Bash</li>
+                </ul>
+            </section>
+
+        </main>
+    </div>
+
+</body>
 </html>

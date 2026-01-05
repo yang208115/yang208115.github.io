@@ -1,1 +1,0 @@
-const a=JSON.parse('{"key":"v-8daa1a0e","path":"/","title":"","lang":"en-US","frontmatter":{"home":true,"modules":["BannerBrand","Blog","Footer"],"bannerBrand":{"bgImage":"/bg.png","description":"A ship in harbor is safe, but that is not what ships are built for."}},"headers":[],"git":{},"filePathRelative":"README.md"}');export{a as data};
